@@ -1,0 +1,33 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <img src="../../../media/functional_things/logo_stranky.png" alt="Logo" class="logo navbar-brand">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Domů <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'automobilky_list' %}">Automobilky</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'zakladatele_list' %}">Zakladatelé</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'druhy_list' %}">Auta</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<style>
+    .navbar {
+        background-color: #1a1a1a;
+    }
+    .logo {
+        height: 120px;
+        width: auto;
+    }
+</style>

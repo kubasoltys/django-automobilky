@@ -1,0 +1,81 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="bg-dark text-white p-2 rounded text-center">
+                    {% if vybrana_znacka %}{{ vybrana_znacka.nazev }}{% else %}Všechna auta{% endif %}</h2>
+                {% for druh in druhy %}
+                    <a href="{% url 'druhy_detail' druh.id %}" class="text-decoration-none">
+                        <div class="card mb-3 auto-card">
+                            <div class="row g-0">
+                                <div class="col-md-3 d-flex align-items-center">
+                                    <img src="{{ druh.fotografie.url }}" class="img-fluid rounded-start img-auto" alt="{{ druh.nazev }}">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">{{ druh.znacka.nazev }} {{ druh.nazev }}</h5>
+                                        <p class="card-text"><small class="text-muted">Typ auta: {{ druh.typ }}</small>
+                                        </p>
+                                        <p class="card-text">{{ druh.popis|truncatewords:15 }}</p>
+                                        <p class="card-text text-white">
+                                            <span class="badge bg-danger">Vyrobeno: {{ druh.znacka.zeme }}, {{ druh.rok_zalozeni }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="text-center">Třídit podle:</h5>
+                    </div>
+                    <div class="list-group">
+                        {% for znacka in znacky %}
+                            <a href="?znacka={{ znacka.id }}" class="list-group-item list-group-item-action auto-card text-decoration-none">{{ znacka.nazev }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="mt-4 mb-5 d-flex justify-content-center">
+                    <a href="{% url 'druhy_create' %}">
+                        <button type="button" class="btn btn-success btnn">+ Přidat auto</button>
+                    </a>
+                    <a href="{% url 'automobilky_create' %}">
+                        <button type="button" class="btn btn-success btnn ml-1">+ Přidat automobilku</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .auto-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .auto-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        a.text-decoration-none {
+            text-decoration: none;
+            color: inherit;
+        }
+        .btnn:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+        .img-auto {
+            height: 150px;
+            width: 100%;
+            object-fit: contain;
+            background-color: white;
+        }
+    </style>
+
+{% endblock %}

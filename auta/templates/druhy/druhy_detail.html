@@ -1,0 +1,47 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <img src="{{ druh.fotografie.url }}"
+                         class="card-img-top img-auto-detail"
+                         alt="{{ druh.nazev }}">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Vyrobeno:</strong> {{ druh.rok_zalozeni }}</p>
+                        <p class="card-text text-muted">{{ druh.typ }}</p>
+                    </div>
+                </div>
+                <div class="card mt-3 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Automobilka:</h5>
+                        <p>
+                            <a href="{% url 'automobilky_detail' druh.znacka.id %}"
+                               class="font-weight-bold text-danger">{{ druh.znacka }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <h1>{{ druh.znacka }} {{ druh.nazev }}</h1>
+                <div class="bg-dark text-white p-3 rounded">
+                    <h4 class="text-white">Popis auta</h4>
+                    <p>{{ druh.popis }}</p>
+                    <a href="{% url 'druhy_update' druh.id %}"><button type="submit" class="btn btn-primary">Upravit</button></a>
+                    <a href="{% url 'druhy_delete' druh.id %}"><button type="submit" class="btn btn-danger">Smazat</button></a>
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back();">Zpět</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .img-auto-detail {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: white;
+        }
+    </style>
+{% endblock %}

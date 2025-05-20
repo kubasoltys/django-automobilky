@@ -1,0 +1,57 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="bg-dark text-white p-3 rounded text-center">Všechny automobilky</h2>
+
+        <div class="row g-4">
+            {% for automobilka in automobilky %}
+                <div class="col-md-3">
+                    <div class="card h-100 position-relative automobilka-card">
+                        <a href="{% url 'automobilky_detail' automobilka.id %}" class="stretched-link"></a>
+
+                        <img src="{{ automobilka.logo.url }}" class="card-img-top img-automobilka"
+                             alt="{{ automobilka.nazev }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ automobilka.nazev }}</h5>
+                            <p class="card-text text-muted">Rok založení: {{ automobilka.rok_zalozeni }}</p>
+                            <p class="card-text text-muted">Země: {{ automobilka.zeme }}</p>
+                            <p class="card-text text-white">
+                                <span class="badge bg-info">Zakladatel: {{ automobilka.zakladatel }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if forloop.counter|divisibleby:4 %}
+                    <div class="w-100 mb-3"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mt-4 mb-5 d-flex justify-content-start">
+        <a href="{% url 'automobilky_create' %}">
+            <button type="button" class="btn btn-success btnn">+ Přidat automobilku</button>
+        </a>
+    </div>
+    <style>
+        .img-automobilka {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .automobilka-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .automobilka-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btnn:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+    </style>
+{% endblock %}

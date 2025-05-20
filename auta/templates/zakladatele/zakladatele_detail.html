@@ -1,0 +1,45 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ zakladatele.fotografie.url }}"
+                         class="card-img-top img-zakladatele-detail"
+                         alt="{{ zakladatele.jmeno }} {{ zakladatele.prijmeni }}">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Datum narození:</strong> {{ zakladatele.narozeni }}</p>
+                    </div>
+                </div>
+                <div class="card mt-3 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Zakladatel automobilky:</h5>
+                        <p>
+                            <a href="{% url 'automobilky_detail' zakladatele.znacka.id %}"
+                               class="font-weight-bold text-danger">{{ zakladatele.znacka }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <h1>{{ zakladatele.jmeno }} {{ zakladatele.prijmeni }}</h1>
+                <div class="bg-dark text-white p-3 rounded">
+                    <h4 class="text-white">Životopis</h4>
+                    <p>{{ zakladatele.biografie }}</p>
+                    <a href="{% url 'zakladatele_update' zakladatele.id %}"><button type="submit" class="btn btn-primary">Upravit</button></a>
+                    <a href="{% url 'zakladatele_delete' zakladatele.id %}"><button type="submit" class="btn btn-danger">Smazat</button></a>
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back();">Zpět</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .img-zakladatele-detail {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+{% endblock %}

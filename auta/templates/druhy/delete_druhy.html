@@ -1,0 +1,19 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+
+    <div class="container mt-5 mb-5">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="mb-4">Opravdu chcete smazat auto "{{ druh.znacka }} {{ druh.nazev }}"?</h3>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger me-2">Smazat</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back();">Zpět</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

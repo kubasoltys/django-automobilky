@@ -1,0 +1,57 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="bg-dark text-white p-3 rounded text-center">Všichni zakladatelé</h2>
+
+        <div class="row g-4">
+            {% for zakladatel in zakladatele %}
+                <div class="col-md-3">
+                    <a href="{% url 'zakladatele_detail' zakladatel.id %}" class="text-decoration-none">
+                        <div class="card h-100 zakladatel-card position-relative">
+                            <img src="{{ zakladatel.fotografie.url }}" class="card-img-top img-zakladatel"
+                                 alt="{{ zakladatel.jmeno }} {{ zakladatel.prijmeni }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark">{{ zakladatel.jmeno }} {{ zakladatel.prijmeni }}</h5>
+                                <p class="card-text text-muted">Narození: {{ zakladatel.narozeni }}</p>
+                                <p class="card-text text-muted">Národnost: {{ zakladatel.narodnost }}</p>
+                                <p class="card-text text-white">
+                                    <span class="badge bg-secondary">{{ zakladatel.znacka }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    <div class="w-100 mb-3"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mt-4 mb-5 d-flex justify-content-start">
+        <a href="{% url 'zakladatele_create' %}">
+            <button type="button" class="btn btn-success btnn">+ Přidat zakladatele</button>
+        </a>
+    </div>
+
+    <style>
+        .zakladatel-card{
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .zakladatel-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        a.text-decoration-none {
+            text-decoration: none;
+        }
+        .btnn:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+        .img-zakladatel {
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+{% endblock %}

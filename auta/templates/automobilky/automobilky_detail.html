@@ -1,0 +1,60 @@
+{% extends 'zaklad.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ automobilky.logo.url }}"
+                         class="card-img-top img-automobilka-detail"
+                         alt="{{ automobilky.nazev }}">
+                    <div class="card-body">
+                        <p class="card-text"><strong>Rok založení:</strong> {{ automobilky.rok_zalozeni }}</p>
+                    </div>
+                </div>
+                <div class="card mt-3 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Modely automobilky:</h5>
+                        <ul>
+                            {% for druh in druhy|slice:":3" %}
+                                <li>
+                                    <a href="{% url 'druhy_detail' druh.id %}" class="text-danger">
+                                        {{ druh.znacka }} {{ druh.nazev }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <h1>{{ automobilky.nazev }}</h1>
+                <p class="mb-3">
+                    <strong>Zakladatel:</strong>
+                    {{ automobilky.zakladatel }}
+                </p>
+
+                <div class="bg-dark text-white p-3 rounded">
+                    <h4 class="text-white">Popis</h4>
+                    <p>{{ automobilky.popis }}</p>
+                    <a href="{% url 'automobilky_update' automobilky.id %}">
+                        <button type="submit" class="btn btn-primary">Upravit</button>
+                    </a>
+                    <a href="{% url 'automobilky_delete' automobilky.id %}">
+                        <button type="submit" class="btn btn-danger">Smazat</button>
+                    </a>
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back();">Zpět</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .img-automobilka-detail {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: white;
+        }
+    </style>
+{% endblock %}
