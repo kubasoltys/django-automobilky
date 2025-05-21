@@ -1,1 +1,1 @@
-#django-automobilky
+django-automobilky
