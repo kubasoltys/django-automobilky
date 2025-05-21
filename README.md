@@ -1,1 +1,1 @@
-django-automobilky
+pip install requirements.txt
