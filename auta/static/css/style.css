@@ -1,0 +1,89 @@
+.navbar {
+    background-color: #1a1a1a;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+}
+
+.img-automobilka {
+    height: 250px;
+    object-fit: cover;
+}
+
+.automobilka-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.automobilka-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btnn:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
+.img-automobilka-detail {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: white;
+}
+
+.zakladatel-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zakladatel-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.img-zakladatel {
+    height: 250px;
+    object-fit: cover;
+}
+
+.img-zakladatele-detail {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.auto-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auto-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+a.text-decoration-none {
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-auto {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    background-color: white;
+}
+
+.img-auto-detail {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: white;
+}
+
+.img-auto-index {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    background-color: white;
+}

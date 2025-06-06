@@ -42,6 +42,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                <p class="text-danger mt-4 font-weight-bold">*Při vytváření nového auta prvně vytvořte automobilku (pokud daná automobilka není vytvořená) a až poté zakladatele a auta.</p>
                 <div class="mt-4 mb-5 d-flex justify-content-center">
                     <a href="{% url 'druhy_create' %}">
                         <button type="button" class="btn btn-success btnn">+ Přidat auto</button>
@@ -53,29 +54,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .auto-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .auto-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        a.text-decoration-none {
-            text-decoration: none;
-            color: inherit;
-        }
-        .btnn:hover {
-            transform: scale(1.02);
-            transition: transform 0.2s ease;
-        }
-        .img-auto {
-            height: 150px;
-            width: 100%;
-            object-fit: contain;
-            background-color: white;
-        }
-    </style>
-
 {% endblock %}
